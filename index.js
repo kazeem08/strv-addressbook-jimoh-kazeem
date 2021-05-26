@@ -1,6 +1,9 @@
 const express = require('express');
 
 const app = express();
+const mongoose = require('./config/mongoose');
+
+mongoose.connect();
 
 app.use(express.json());
 
