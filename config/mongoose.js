@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoConfig = require('./vars')
 /**
  * A MongoDB client based on mongoose
  * To use, simply set an environment variable MONGODB_CONNECTION_STRING to a valid mongodb connection uri
@@ -11,7 +12,7 @@ mongoose.connection.on('error', (err) => {
 
 exports.connect = () => {
   mongoose
-    .connect(mongo.uri, {
+    .connect(mongoConfig.mongoUri, {
       useCreateIndex: true,
       keepAlive: 1,
       useNewUrlParser: true,

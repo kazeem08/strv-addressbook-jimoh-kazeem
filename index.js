@@ -1,18 +1,23 @@
+require('dotenv').config();
 const express = require('express');
 
 const app = express();
 const mongoose = require('./config/mongoose');
+const appConfig = require('./config/vars')
 
 mongoose.connect();
 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/', async (req, res) => {
-  res.json('HEllo')
+  return res.json('HEllo')
 });
 
-const port = 3500;
+require('./routes')(app);
 
-app.listen(3500, () => {
+const port = appConfig.port || 3500;
+
+app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
