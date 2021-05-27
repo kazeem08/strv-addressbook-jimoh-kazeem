@@ -8,7 +8,7 @@ module.exports = {
    * @returns 
    */
   async registerUser(req, res) {
-    console.log('request body', req.body);
+    // console.log('request body', req.body);
 
     const { email } = req.body;
     //Check If User Exists
@@ -17,6 +17,8 @@ module.exports = {
       return res.status(403).json({ error: 'Email is already in use' });
     }
 
+
+
     const user = await UserService.addUser(req.body);
 
     return res.json(user);
@@ -24,9 +26,24 @@ module.exports = {
 
   async login(req, res) {
     console.log('request body', req.body);
+    const { email, password } = req.body;
 
-    const user = await UserModel.create(req.body);
+    //Check If User Exists
+    let foundUser = await UserModel.findOne({ email });
+    if (!foundUser) {
+      return res.status(403).json({ error: 'Invalid username/password' });
+    }
 
-    return res.json(user);
+
+
+    const token = await UserService.login(foundUser.id)
+
+
+    return res.json(token);
+  },
+
+  async getUsers(req, res) {
+    console.log('HERERRERR', req.user)
+    return res.json(await UserModel.find());
   }
 }

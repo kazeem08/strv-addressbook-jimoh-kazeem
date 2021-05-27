@@ -7,11 +7,12 @@ const UserModel = require('../models/user')
 
 passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'Kazeem'
+  secretOrKey: 'kazeem'
 },
   function (jwtPayload, done) {
-    return UserModel.findById(jwtPayload.sub)
+    return UserModel.findById(jwtPayload.userId)
       .then(user => {
+        console.log('YUUUSUUS', user)
         return done(null, user);
       }
       ).catch(err => {
