@@ -12,7 +12,6 @@ function auth(req, res, next) {
     });
   }
 
-
   try {
     const decoded = jwt.verify(token.replace('Bearer ', ''), config.jwtSecret);
     req.user = decoded;

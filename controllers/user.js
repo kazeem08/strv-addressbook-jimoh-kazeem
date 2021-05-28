@@ -31,8 +31,9 @@ module.exports = {
 
       const user = await UserService.addUser(data);
 
-      const token = await UserService.login(user.id);
-      res.cookie('userToken', { token }, {});
+      const token = await UserService.login(user._id);
+
+      res.cookie('userToken', token, {});
 
       return res.successResponse({
         code: 200,
