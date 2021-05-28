@@ -1,5 +1,7 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors')
+
 require('./config/firebase');
 const responseManager = require('./lib/responseManager')
 
@@ -8,6 +10,8 @@ const mongoose = require('./config/mongoose');
 const appConfig = require('./config/vars')
 
 mongoose.connect();
+
+app.use(cors())
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
