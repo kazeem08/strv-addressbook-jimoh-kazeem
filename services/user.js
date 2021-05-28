@@ -1,9 +1,8 @@
-const UserModel = require('../models/user');
-const { generateToken } = require('../lib/generateToken')
+const UserModel = require("../models/user");
+const { generateToken } = require("../lib/generateToken");
 
 module.exports = {
   async addUser(payload) {
-
     const user = await UserModel.create(payload);
 
     return user;
@@ -13,5 +12,5 @@ module.exports = {
     const token = await generateToken(id);
 
     return token;
-  }
-}
+  },
+};

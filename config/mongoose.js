@@ -6,13 +6,14 @@ const mongoConfig = require('./vars')
  */
 
 mongoose.connection.on('error', (err) => {
-  logger.error(`MongoDB connection error: ${err}`);
-  process.exit(-1);
+  console.error(`MongoDB connection error: ${err}`);
+  process.exit(1);
 });
 
+const mongoString = process.env.NODE_ENV === 'test' ? mongoConfig.mongoTestUri : mongoConfig.mongoUri;
 exports.connect = () => {
   mongoose
-    .connect(mongoConfig.mongoUri, {
+    .connect(mongoString, {
       useCreateIndex: true,
       keepAlive: 1,
       useNewUrlParser: true,
