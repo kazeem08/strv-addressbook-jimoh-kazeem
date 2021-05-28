@@ -8,6 +8,7 @@ A restful API address book aapplication using Node.js, Express and MongoDB
 - CORS enabled
 - Uses [npm](https://www.npmjs.com/)
 - Express + MongoDB ([Mongoose](http://mongoosejs.com/))
+- Firebase (https://firebase.google.com/docs)
 - Load environment variables from .env files with [dotenv](https://www.npmjs.com/package/dotenv)
 - Request validation with [joi](https://www.npmjs.com/package/joi)
 - Tests with [mocha](https://mochajs.org), [chai](http://chaijs.com)
