@@ -78,7 +78,6 @@ module.exports = {
         message: 'Internal server error',
       });
     }
-
   },
 
 }
