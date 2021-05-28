@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(responseManager)
 
 app.get('/', async (req, res) => {
-  return res.json('HEllo')
+  return res.json('Welcome to addressbook app')
 });
 
 require('./routes')(app);
